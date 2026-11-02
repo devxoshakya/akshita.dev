@@ -258,7 +258,7 @@ const IntroProfile = ({ mode, onComplete }: IntroProfileProps) => {
                                 className="inline-block font-semibold"
                                 transition={{ layout: profileLayoutTransition }}
                             >
-                                Dev
+                                Akshita
                             </motion.span>
                         </div>
                     ) : null}
