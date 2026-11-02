@@ -19,7 +19,7 @@ export const SITE = {
             "Software engineer building fast, thoughtful products across frontend systems, backend infrastructure, AI, and the web.",
     },
     KEYWORDS: [
-        "Dev Shakya",
+        "Akshita Srivastava",
         "Software Engineer",
         "Product Builder",
         "Frontend Engineer",

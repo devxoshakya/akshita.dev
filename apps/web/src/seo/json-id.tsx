@@ -48,7 +48,7 @@ const FAQJsonLd = () => {
   const faqs = [
     {
       answer: SITE.DESCRIPTION.LONG,
-      question: "Who is Dev Shakya?",
+      question: "Who is Akshita Srivastava?",
     },
     {
       answer:
@@ -56,7 +56,7 @@ const FAQJsonLd = () => {
       question: "What are Dev's areas of expertise?",
     },
     {
-      answer: `You can reach out to Dev via his social profiles on LinkedIn and GitHub, or visit his website at ${SITE.URL}.`,
+      answer: `You can reach out to Akshita via her social profiles on LinkedIn and GitHub, or visit her website at ${SITE.URL}.`,
       question: "How can I contact Dev?",
     },
     {

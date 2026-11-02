@@ -273,7 +273,7 @@ export function ExperienceItem({
                     <img
                         src={logo}
                         alt=""
-                        className="mt-1.5 size-8 shrink-0 rounded-full border bg-muted object-cover"
+                        className="mt-1.5 size-8 shrink-0 rounded-full border bg-muted object-contain p-0.5"
                     />
                 ) : (
                     <span className="mt-1.5 grid size-8 shrink-0 place-items-center rounded-full border bg-muted text-muted-foreground">

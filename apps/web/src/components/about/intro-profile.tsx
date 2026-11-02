@@ -15,12 +15,6 @@ import { UserAvatar } from "@/components/user-avatar";
 import { SITE } from "@/constants/site";
 import { USER } from "@/constants/user";
 import { useLockBodyScroll } from "@/hooks/use-lock-body-scroll";
-import {
-    Tooltip,
-    TooltipContent,
-    TooltipProvider,
-    TooltipTrigger,
-} from "@akshita.dev/ui/components/tooltip";
 
 const GREETINGS = [
     "Hello",
@@ -82,211 +76,16 @@ interface IntroProfileProps {
     onComplete?: () => void;
 }
 
-type CodingStats = {
-    is_active: boolean;
-    total_seconds: number;
-    daily_seconds: number;
-    stale?: boolean;
-};
-
-function CodingStatusIndicator() {
-    const [stats, setStats] = useState<CodingStats | null>(null);
-    const [requestFailed, setRequestFailed] = useState(false);
-
-    useEffect(() => {
-        let stopped = false;
-        let controller: AbortController | undefined;
-        let timeout: number | undefined;
-
-        async function loadStats() {
-            controller = new AbortController();
-
-            try {
-                const response = await fetch("/api/stats/coding", {
-                    headers: { accept: "application/json" },
-                    cache: "no-store",
-                    signal: controller.signal,
-                });
-
-                if (!response.ok) {
-                    throw new Error(
-                        `Coding stats request failed: ${response.status}`,
-                    );
-                }
-
-                const data = (await response.json()) as CodingStats;
-
-                if (
-                    typeof data.is_active !== "boolean" ||
-                    typeof data.total_seconds !== "number" ||
-                    !Number.isFinite(data.total_seconds) ||
-                    typeof data.daily_seconds !== "number" ||
-                    !Number.isFinite(data.daily_seconds)
-                ) {
-                    throw new Error("Invalid coding stats response");
-                }
-
-                setStats(data);
-                setRequestFailed(false);
-            } catch {
-                if (!controller.signal.aborted) {
-                    setRequestFailed(true);
-                }
-            } finally {
-                if (!stopped) {
-                    timeout = window.setTimeout(() => {
-                        void loadStats();
-                    }, 60_000);
-                }
-            }
-        }
-
-        void loadStats();
-
-        return () => {
-            stopped = true;
-            controller?.abort();
-
-            if (timeout !== undefined) {
-                window.clearTimeout(timeout);
-            }
-        };
-    }, []);
-
-    const indicatorColor = !stats
-        ? "neutral"
-        : stats.is_active
-          ? "green"
-          : stats.daily_seconds > 0
-            ? "yellow"
-            : "red";
-
-    // Label shown in the tooltip and used for the aria-label.
-    // (The previous code referenced an undefined `status`, which resolved to window.status, an empty string.)
-    const statusLabel = !stats
-        ? requestFailed
-            ? "Unavailable"
-            : "Loading"
-        : stats.is_active
-          ? "Online"
-          : stats.daily_seconds > 0
-            ? "Idle"
-            : "Offline";
-
-    const indicatorStyles = {
-        neutral: {
-            border: "border-neutral-400 dark:border-neutral-600",
-            dot: "bg-neutral-400 dark:bg-neutral-500",
-            text: "text-muted-foreground",
-        },
-        green: {
-            border: "border-neutral-250 dark:border-neutral-750",
-            dot: "bg-green-600 dark:bg-green-500",
-            text: "text-green-700 dark:text-green-400",
-        },
-        yellow: {
-            border: "border-neutral-250 dark:border-neutral-750",
-            dot: "bg-yellow-600 dark:bg-yellow-400",
-            text: "text-yellow-700 dark:text-yellow-400",
-        },
-        red: {
-            border: "border-neutral-250 dark:border-neutral-750",
-            dot: "bg-red-600 dark:bg-red-500",
-            text: "text-red-700 dark:text-red-400",
-        },
-    }[indicatorColor];
-
-    const totalHours = stats
-        ? `${(stats.total_seconds / 3600).toFixed(1)} hours`
-        : "—";
-
-    const dailyMinutes = stats
-        ? `${Math.floor(stats.daily_seconds / 60)} minutes`
-        : "—";
-
-    return (
-        <TooltipProvider>
-            <Tooltip>
-                <TooltipTrigger
-                    render={
-                        <button
-                            type="button"
-                            aria-label={`Coding status: ${statusLabel}`}
-                            className={`absolute -bottom-0.5 -left-0.5 z-10 grid size-4 place-items-center rounded-full border bg-white shadow-sm dark:bg-neutral-950 ${indicatorStyles.border} outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2`}
-                        >
-                            <span
-                                aria-hidden="true"
-                                className={`size-2.5 rounded-full ${indicatorStyles.dot}`}
-                            />
-                        </button>
-                    }
-                />
-
-                {/* [&_.rotate-45]:hidden hides the arrow (the diamond) the shadcn tooltip renders. */}
-                <TooltipContent className="max-w-40 rounded-md border border-dashed border-neutral-300 bg-white p-1.5 text-neutral-950 shadow-lg dark:border-neutral-700 dark:bg-neutral-950 dark:text-neutral-50 [&_.rotate-45]:hidden">
-                    <table className="w-full table-fixed border-collapse text-[10px] leading-3.5">
-                        <tbody>
-                            <tr className="border-b border-dashed border-neutral-200 dark:border-neutral-800">
-                                <th
-                                    scope="row"
-                                    className="w-1/2 border-r border-dashed border-neutral-200 dark:border-neutral-800 py-1 pr-2 text-left font-normal text-neutral-500 dark:text-neutral-400"
-                                >
-                                    Status
-                                </th>
-                                <td className="py-1 pl-2 text-right">
-                                    <span
-                                        className={`whitespace-nowrap font-medium ${indicatorStyles.text}`}
-                                    >
-                                        {statusLabel}
-                                    </span>
-                                </td>
-                            </tr>
-
-                            <tr className="border-b border-dashed border-neutral-200 dark:border-neutral-800">
-                                <th
-                                    scope="row"
-                                    className="border-r border-dashed border-neutral-200 dark:border-neutral-800 py-1 pr-2 text-left font-normal text-neutral-500 dark:text-neutral-400"
-                                >
-                                    Total coded
-                                </th>
-                                <td className="whitespace-nowrap py-1 pl-2 text-right font-medium tabular-nums">
-                                    {totalHours}
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <th
-                                    scope="row"
-                                    className="border-r border-dashed border-neutral-200 dark:border-neutral-800 pt-1 pr-2 text-left font-normal text-neutral-500 dark:text-neutral-400"
-                                >
-                                    Coded today
-                                </th>
-                                <td className="whitespace-nowrap pt-1 pl-2 text-right font-medium tabular-nums">
-                                    {dailyMinutes}
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </TooltipContent>
-            </Tooltip>
-        </TooltipProvider>
-    );
-}
-
 const ProfileHeader = ({ shouldAnimateDetails }: ProfileHeaderProps) => (
     <div className="relative z-2 flex items-center gap-5">
-        <div className="relative w-fit">
-            <UserAvatar
-                layoutId={
-                    shouldAnimateDetails ? PROFILE_AVATAR_LAYOUT_ID : undefined
-                }
-                layoutTransition={
-                    shouldAnimateDetails ? profileLayoutTransition : undefined
-                }
-            />
-
-            <CodingStatusIndicator />
-        </div>
+        <UserAvatar
+            layoutId={
+                shouldAnimateDetails ? PROFILE_AVATAR_LAYOUT_ID : undefined
+            }
+            layoutTransition={
+                shouldAnimateDetails ? profileLayoutTransition : undefined
+            }
+        />
 
         <div>
             <Title className="font-sans tracking-tight whitespace-nowrap">
@@ -303,7 +102,7 @@ const ProfileHeader = ({ shouldAnimateDetails }: ProfileHeaderProps) => (
                             : undefined
                     }
                 >
-                    Dev
+                    Akshita
                 </motion.span>{" "}
                 <motion.span
                     className="inline-block"
@@ -318,7 +117,7 @@ const ProfileHeader = ({ shouldAnimateDetails }: ProfileHeaderProps) => (
                     animate={{ opacity: 1, transform: "translate3d(0, 0, 0)" }}
                     transition={detailTransition}
                 >
-                    Shakya
+                    Srivastava
                 </motion.span>
             </Title>
 

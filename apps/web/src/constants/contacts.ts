@@ -6,7 +6,7 @@ export const CONTACTS = [
   {
     icon: "github",
     link: {
-      display: "@devxoshakya",
+      display: "@akshitasrivastava20",
       url: LINK.GITHUB,
     },
     title: "GitHub",
@@ -14,7 +14,7 @@ export const CONTACTS = [
   {
     icon: "linkedin",
     link: {
-      display: "@devxoshakya",
+      display: "@akshitasrivastava20",
       url: LINK.LINKEDIN,
     },
     title: "LinkedIn",
@@ -22,31 +22,15 @@ export const CONTACTS = [
   {
     icon: "leetcode",
     link: {
-      display: "@devxoshakya",
+      display: "@akshitasrivastava20",
       url: LINK.LEETCODE,
     },
     title: "LeetCode",
   },
   {
-    icon: "telegram",
-    link: {
-      display: "@devxoshakya",
-      url: LINK.TELEGRAM,
-    },
-    title: "Telegram",
-  },
-  {
-    icon: "gfg",
-    link: {
-      display: "@devxoshakya",
-      url: LINK.GFG,
-    },
-    title: "GeeksforGeeks",
-  },
-  {
     icon: "instagram",
     link: {
-      display: "@devxoshakya",
+      display: "@akshita8368",
       url: LINK.INSTAGRAM,
     },
     title: "Instagram",

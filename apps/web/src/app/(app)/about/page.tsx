@@ -13,16 +13,16 @@ import { createMetadata } from "@/seo/metadata";
 export const metadata = createMetadata({
     title: "About",
     description:
-        "Learn more about Dev Shakya, the work behind this portfolio, and the tools that shape it.",
+        "Learn more about Akshita Srivastava, the work behind this portfolio, and the tools that shape it.",
     canonical: "/about",
     category: "about",
 });
 
-const p1 = "https://cdn2.devxoshakya.xyz/folio/me.webp";
+const p1 = "https://cdn2.devxoshakya.xyz/folio/avatar-akshi.webp";
 const p2 = "https://cdn2.devxoshakya.xyz/folio/card.webp";
 const p3 = "https://cdn2.devxoshakya.xyz/folio/tree.webp";
 
-const birthDate = new Date(2004, 11, 20);
+const birthDate = new Date(2005, 9, 15);
 const today = new Date();
 const age =
     today.getFullYear() -
@@ -66,7 +66,7 @@ const AboutPage = () => (
 
             <div className="prose prose-neutral dark:prose-invert group max-w-none text-sm mt-8 leading-6">
                 <p className="transition-colors duration-300 hover:text-foreground">
-                    Hey there! I&apos;m Dev Shakya, a {age}-year-old software
+                    Hey there! I&apos;m Akshita Srivastava, a {age}-year-old software
                     engineer who enjoys building fast, well-crafted products
                     across{" "}
                     <Link
@@ -80,17 +80,72 @@ const AboutPage = () => (
                     , backend systems, cloud infrastructure, and AI.
                 </p>
                 <p className="transition-colors duration-300 hover:text-foreground">
-                    I started writing code in 2018 and have since developed a
-                    strong interest in responsive, secure applications that make
-                    complex things feel simple. Full-stack development gives me
-                    room to care about both the product and the systems
-                    underneath it.
+                    My journey started early — back in the 9th grade, writing
+                    my first{" "}
+                    <Link
+                        href="https://www.java.com/en/"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="underline decoration-border underline-offset-4 transition-colors hover:text-primary"
+                    >
+                        Java
+                    </Link>{" "}
+                    programs. That&apos;s where{" "}
+                    <Link
+                        href="https://www.w3schools.com/java/java_oop.asp"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="underline decoration-border underline-offset-4 transition-colors hover:text-primary"
+                    >
+                        OOP
+                    </Link>{" "}
+                    clicked for me: classes, objects, and the satisfaction of
+                    modelling messy problems with clean structure.
                 </p>
                 <p className="transition-colors duration-300 hover:text-foreground">
-                    Lately, I&apos;m exploring AI engineering, scalable backend
-                    systems, data structures, and DevOps with a growing
-                    curiosity about Linux and the infrastructure that keeps
-                    products moving.
+                    In senior high school I picked up{" "}
+                    <Link
+                        href="https://www.python.org"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="underline decoration-border underline-offset-4 transition-colors hover:text-primary"
+                    >
+                        Python
+                    </Link>
+                    , and with it the freedom to script, automate, and build
+                    things outside the classroom.
+                </p>
+                <p className="transition-colors duration-300 hover:text-foreground">
+                    In college it became official — proper{" "}
+                    <Link
+                        href="https://nextjs.org"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="underline decoration-border underline-offset-4 transition-colors hover:text-primary"
+                    >
+                        development
+                    </Link>{" "}
+                    and{" "}
+                    <Link
+                        href="https://aws.amazon.com/devops/what-is-devops/"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="underline decoration-border underline-offset-4 transition-colors hover:text-primary"
+                    >
+                        DevOps
+                    </Link>
+                    , shipping real projects and running the infrastructure
+                    underneath them. These days I&apos;m deep into{" "}
+                    <Link
+                        href="https://ollama.com"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="underline decoration-border underline-offset-4 transition-colors hover:text-primary"
+                    >
+                        AI engineering
+                    </Link>
+                    , exploring how scalable backend systems and intelligent
+                    products come together.
                 </p>
             </div>
         </div>

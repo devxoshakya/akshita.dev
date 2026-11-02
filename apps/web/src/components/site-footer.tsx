@@ -25,13 +25,13 @@ const SiteFooter = () => {
                 <Logo
                     aria-label="Home"
                     role="img"
-                    className="text-foreground h-12 mb-5 mt-5 w-auto"
+                    className="text-foreground h-15 w-full mb-5 mt-5 mr-6"
                 />
             </div>
             <DottedSeparator className="mb-3" />
             <div className="flex items-center justify-between  pb-[calc(env(safe-area-inset-bottom,0)+0.75rem)]">
                 <p className="text-muted-foreground text-xs">
-                    &copy; {new Date().getFullYear()} <span>Dev Shakya</span>
+                    &copy; {new Date().getFullYear()} <span>Akshita Srivastava</span>
                 </p>
                 <p className="text-muted-foreground text-xs">
                     you're visitor # {visitorCount !== null ? visitorCount : "loading..."}

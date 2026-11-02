@@ -1,4 +1,4 @@
-import { CalendarDaysIcon, MailIcon } from "lucide-react";
+import { FileTextIcon, MailIcon } from "lucide-react";
 import { Suspense } from "react";
 import type { Route } from "next";
 
@@ -61,26 +61,19 @@ const AboutSection = () => {
                     <GitHubContributions contributions={contributions} />
                 </Suspense>
                 <div className="flex flex-col gap-3 p-2">
-                    <p>
-                        Interested in working together? Check out my{" "}
-                        <AppLink
-                            href={LINK.RESUME as Route}
-                            target="_blank"
-                            className="text-muted-foreground text-sm font-medium inline-flex min-w-17.25"
-                            external
-                        >
-                            Resume
-                        </AppLink>
-                    </p>
                     <div className="flex flex-row items-center gap-2">
                         <Button
                             nativeButton={false}
                             render={
-                                <AppLink href={LINK.CALENDLY} target="_blank" />
+                                <AppLink
+                                    href={LINK.RESUME as Route}
+                                    target="_blank"
+                                    className="min-w-45 justify-center"
+                                />
                             }
                         >
-                            <CalendarDaysIcon />
-                            Book an intro call
+                            <FileTextIcon />
+                            Check out my resume
                         </Button>
                         <Button
                             variant="outline"

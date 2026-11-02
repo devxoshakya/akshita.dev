@@ -11,7 +11,7 @@ import { createMetadata } from "@/seo/metadata";
 export const metadata = createMetadata({
     title: "Blog",
     description:
-        "Notes from Dev Shakya on software, design engineering, freelancing, and building for the web.",
+        "Notes from Akshita Srivastava on software, design engineering, freelancing, and building for the web.",
     canonical: "/blog",
     category: "writing",
 });

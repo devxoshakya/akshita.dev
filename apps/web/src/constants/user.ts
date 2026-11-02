@@ -1,22 +1,19 @@
-import { EXPERIENCES } from "@/constants/experiences";
 import { LINK } from "@/constants/links";
 import { getBaseUrl } from "@/constants/url";
-
-const [currentExperience] = EXPERIENCES;
 
 export const USER = {
   address: {
     country: "India",
     locality: "Meerut",
   },
-  avatar: "https://cdn2.devxoshakya.xyz/folio/avatar.png",
-  company: currentExperience.experienceOrg.name,
+  avatar: "https://cdn2.devxoshakya.xyz/folio/avatar-akshi.webp",
+  company: "Xebo.ai",
   email: LINK.EMAIL,
-  firstName: "Dev",
-  jobTitle: currentExperience.experienceTitle,
-  lastName: "Shakya",
+  firstName: "Akshita",
+  jobTitle: "Technical Trainee",
+  lastName: "Srivastava",
   roles: ["Full Stack Developer", "Software Engineer", "AI Engineer"],
-  username: "devxoshakya",
+  username: "akshitasrivastava20",
   website: getBaseUrl(),
 };
 

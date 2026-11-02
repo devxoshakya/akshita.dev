@@ -1,5 +1,5 @@
 import type { ComponentType } from "react";
-import { CodeXmlIcon, LightbulbIcon } from "lucide-react";
+import { CodeXmlIcon, ShieldCheckIcon } from "lucide-react";
 import type { Experience } from "@/types/experiences";
 
 export const HOMEPAGE_EXPERIENCE_COUNT = 3 as const;
@@ -28,45 +28,37 @@ export type DetailedExperience = {
 
 export const DETAILED_EXPERIENCES: DetailedExperience[] = [
   {
-    id: "boredheadlabs",
-    company: "Boredheadlabs",
-    logo: "https://www.devxoshakya.xyz/images/boredheadlabs.jpeg",
-    website: "https://boredheadlabs.com",
-    location: "Remote, India",
+    id: "xebo-ai",
+    company: "Xebo.ai",
+    logo: "https://cdn.prod.website-files.com/65a8cbf4cac5fe8263def347/65ad06fa1bc108fccf36034b_xebo.svg",
+    website: "https://xebo.ai",
     roles: [
       {
-        id: "boredheadlabs-fullstack-intern",
-        title: "Full Stack Developer Intern",
-        type: "Internship",
-        start: "Aug 2025",
-        end: "Oct 2025",
-        icon: LightbulbIcon,
+        id: "xebo-ai-technical-trainee",
+        title: "Technical Trainee",
+        type: "Full-time",
+        start: "Aug 2026",
+        icon: ShieldCheckIcon,
         description:
-          "Built and shipped a serverless SaaS platform spanning frontend, backend, AI search, data pipelines, authentication, and cloud infrastructure.",
+          "Building and hardening backend systems at Xebo.ai, working across the stack with a security-first mindset.",
         highlights: [
-          "Serverless SaaS architecture",
-          "RAG-powered search",
-          "85% reduced backend load",
+          "Fixed a major CVE",
+          "API leak remediation",
+          "Scalability testing",
         ],
         bullets: [
-          "Built a serverless SaaS stack using Next.js 15, PostgreSQL with Prisma, and Cloudflare Workers.",
-          "Engineered multi-provider authentication, RBAC, OAuth, and subscription-gated features.",
-          "Deployed autonomous Reddit data pipelines with cron-based ingestion on Cloudflare Workers.",
-          "Optimized queries and cache invalidation, reducing backend load by 85% and achieving sub-200ms TTFB.",
-          "Integrated Google Generative AI with RAG for context-aware search.",
-          "Built the Off Market Deals platform for discovering hidden business opportunities.",
+          "Develops backend systems primarily with Next.js, Node.js, and Express.",
+          "Worked on backend security, helping fix a major CVE in the system.",
+          "Helped remediate an API leak and drove the fix through to resolution.",
+          "Runs backend testing for scalability and reliability, with monitoring in Grafana.",
         ],
         skills: [
-          "TypeScript",
-          "Next.js 15",
-          "React",
-          "PostgreSQL",
-          "Prisma",
-          "Cloudflare Workers",
-          "Cloudflare R2",
-          "Google Generative AI",
-          "RAG",
-          "OAuth",
+          "Next.js",
+          "Node.js",
+          "Express",
+          "Grafana",
+          "Backend Security",
+          "Scalability Testing",
         ],
       },
     ],

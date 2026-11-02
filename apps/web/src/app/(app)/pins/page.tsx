@@ -5,7 +5,7 @@ import PinsSection from "@/components/pins/section";
 export const metadata = createMetadata({
     title: "Pins",
     description:
-        "A collection of visual notes, references, and things Dev Shakya wants to remember.",
+        "A collection of visual notes, references, and things Akshita Srivastava wants to remember.",
     canonical: "/pins",
     category: "visual notes",
 });
